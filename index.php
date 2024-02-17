@@ -39,106 +39,65 @@ include('connection.php');
         ?>
 
         <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content-wrapper" class="d-flex flex-column" style="background-color: #eeeeee">
             
             <!-- Main Content -->
             <div id="content">
 <head>
     <title> Login Form Design </title>
-    
+    <style>
+    .border-left-primary-custom {
+        border-left-color: #343a40;
+        border-left-width: 4px;
+    }
+    .card-dbrd{
+        background-color: #313a46;
+        border-radius: 5px;
+        color: white;
+    }
+</style>
+
 </head>
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    
-
-                    <!-- Topbar Search -->
-                    
-
-                    <!-- Topbar Navbar -->
-
-                    
-                    <ul class="navbar-nav ml-auto">
-
-                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                       <a href ="athleteAdd.php"><button class="btn btn-primary mb-3 mt-3" >Add New Athlete</button> </a>
-
-                        
-                        <div class="topbar-divider d-none d-sm-block"></div>
-                        
-
-                        <!-- Nav Item - User Information -->
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo " ".$_SESSION['Name']." ";?></span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
-                            </a>
-                            
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="logout.php">
-                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
-                                </a>
-                            </div>
-                        </li>
-
-                    </ul>
-
-                </nav>
+                <?php
+                 include('navbar.php');
+                ?>
                 <!-- End of Topbar -->
-
+            
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <div class="container-fluid" style="background-color:#eeeeee">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-
-
-
+                    <div class="d-sm-flex align-items-center justify-content-between">
+                        <h1 style="font-size: 25px; font-weight: bold; font-family: sans-serif; padding-left: 10px; color:#313A46;">DATA MONITORING AND ESTIMATES</h1>
                     </div>
 
                     <!-- Content Row -->
                     <div class="row">
-
+                    
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-4 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
+                        <div class="col-xl-2 col-md-6 mb-4">
+                            <div class="card-dbrd">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Registered Athletes</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                 <?php
+                                            <div class="text-xs font-weight-bold text-uppercase mb-3" style="color: white">
+                                                TOTAL ORDER</div>
+                                                <div class="h5 mb-0 font-weight-bold text-800" style="color: white">
+                                                    <?php
                                                     
-                                                    $query = "select count(Student_ID) AS NumStudents FROM athletes";
+                                                        $query = "select count(ID) AS countID FROM products";
 
-                                                    $result = mysqli_query( $conn, $query);
-                                                    
-                                                while ($row = mysqli_fetch_assoc($result))
-                                                    { 
-                                                        echo $row['NumStudents'];
-                                                    }
-                                                   
-
-                                                    
-                                                  ?>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class='fas fa-user-friends' style='font-size:24px'></i>
-
+                                                        $result = mysqli_query( $conn, $query);
+                                                        
+                                                    while ($row = mysqli_fetch_assoc($result))
+                                                        { 
+                                                            echo $row['countID'];
+                                                        }
+                                                        
+                                                    ?>
+                                                    <i class='fas fa-female' style='font-size:24px; float: right; color: white;'></i>
+                                                </div>
                                         </div>
                                     </div>
                                 </div>
@@ -146,33 +105,30 @@ include('connection.php');
                         </div>
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-4 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="col-xl-2 col-md-6 mb-4">
+                            <div class="card-dbrd"> 
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Total Number of Male Athletes</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            <div class="text-xs font-weight-bold text-uppercase mb-3" style="color:white">
+                                                PENDING ORDER</div>
+                                            <div class="h5 mb-0 font-weight-bold text-800"  style="color: white">
                                                  <?php
                                                     
-                                                    $query = "select count(sex) AS numMale FROM athletes where sex = 'male'";
+                                                    $query = "select count(ID) AS countID FROM products";
 
                                                     $result = mysqli_query( $conn, $query);
-
+                                                    
                                                 while ($row = mysqli_fetch_assoc($result))
                                                     { 
-                                                        echo $row['numMale'];
+                                                        echo $row['countID'];
                                                     }
                                                    
 
                                                     
                                                   ?>
-
+                                                <i class='fas fa-female' style='font-size:24px; float: right;'></i>
                                             </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class='fas fa-male' style='font-size:24px'></i>
                                         </div>
                                     </div>
                                 </div>
@@ -180,48 +136,249 @@ include('connection.php');
                         </div>
 
                         <!-- Earnings (Monthly) Card Example -->
-                       <div class="col-xl-4 col-md-6 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
+                       <div class="col-xl-2 col-md-6 mb-4">
+                             <div class="card-dbrd">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                                Total Number Female Athletes</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                            <div class="text-xs font-weight-bold text-uppercase mb-3" style="color: white">
+                                                UNFINISHED</div>
+                                            <div class="h5 mb-0 font-weight-bold text-800"  style="color: white">
                                                  <?php
                                                     
-                                                    $query = "select count(sex) AS numFemale FROM athletes where sex = 'female'";
+                                                    $query = "select count(ID) AS countID FROM products";
 
                                                     $result = mysqli_query( $conn, $query);
-
+                                                    
                                                 while ($row = mysqli_fetch_assoc($result))
                                                     { 
-                                                        echo $row['numFemale'];
+                                                        echo $row['countID'];
                                                     }
                                                    
 
                                                     
                                                   ?>
+                                                  <i class='fas fa-female' style='font-size:24px; float: right;'></i>
                                             </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class='fas fa-female' style='font-size:24px'></i>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
+                        <div class="col-xl-2 col-md-6 mb-4">
+                            <div class="card-dbrd">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-uppercase mb-3" style="color: white">
+                                                PRODUCTS</div>
+                                                <div class="h5 mb-0 font-weight-bold text-800"  style="color: white">
+                                                    <?php
+                                                        
+                                                        $query = "select count(ID) AS countID FROM products";
 
+                                                        $result = mysqli_query( $conn, $query);
+                                                        
+                                                    while ($row = mysqli_fetch_assoc($result))
+                                                        { 
+                                                            echo $row['countID'];
+                                                        }
+                                                    ?>
+                                                    <i class='fas fa-female' style='font-size:24px; float: right;'></i>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                        <div class="col-xl-2 col-md-6 mb-4">
+                            <div class="card-dbrd">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-uppercase mb-3" style="color: white">
+                                                CUSTOMERS</div>
+                                            <div class="h5 mb-0 font-weight-bold text-800"  style="color: white">
+                                                 <?php
+                                                    
+                                                    $query = "select count(ID) AS countID FROM products";
+
+                                                        $result = mysqli_query( $conn, $query);
+                                                        
+                                                    while ($row = mysqli_fetch_assoc($result))
+                                                        { 
+                                                            echo $row['countID'];
+                                                        }
+                                                   
+
+                                                    
+                                                  ?>
+                                                <i class='fas fa-female' style='font-size:24px; float: right;'></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Earnings (Monthly) Card Example -->
+                       <div class="col-xl-2 col-md-6 mb-4">
+                            <div class="card-dbrd">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-uppercase mb-3" style="color: white">
+                                                SUPPLIERS</div>
+                                            <div class="h5 mb-0 font-weight-bold text-800"  style="color: white">
+                                                 <?php
+                                                    
+                                                    $query = "select count(ID) AS countID FROM products";
+
+                                                        $result = mysqli_query( $conn, $query);
+                                                        
+                                                    while ($row = mysqli_fetch_assoc($result))
+                                                        { 
+                                                            echo $row['countID'];
+                                                        }
+                                                   
+
+                                                    
+                                                  ?>
+                                                  <i class='fas fa-female' style='font-size:24px; float: right;'></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <!-- Pending Requests Card Example -->
                     <div class="col-xl-12 col-md-12 mb-12">
                             
+
+                    </div>
+
+                        <!-- Additional Canvas for Bar Graph -->
+                    <div class="row">
+                        <div class="col-xl-14 col-md-12 mb-12">
+                            <canvas id="myBarChart" width="400" height="350"></canvas>
+                        </div>
                         
-                    <div class="contain">
-       
-       </div>
-                                                </div>
-                    
+                    </div>
+                    <div class="row" style="width: 30%;">       
+                        <div class="col-xl-12 col-md-6 mb-4" style="margin-left: 20px;">
+                            <div class="card-dbrd">
+                                <div class="table-responsive-sm">
+                                    <table class="table table-centered mb-4" style="font-size: 10px;">
+                                        <thead style="background-color: #212529;">
+                                            <tr>
+                                                <th style="text-align: center; color: #ff3c00;">
+                                                    <span>SALE TRANSACTIONS</span>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="text-align: center; font-weight: bold; color: white; font-size: 20px;">1</td>
+                                            </tr>
+                                        </tbody>
+                                        <thead style="background-color: #212529;">
+                                            <tr>
+                                                <th style="text-align: center; color: #ff3c00;">
+                                                    <span>Unpaid Orders</span>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="color: white; font-size: 16px;">
+                                                    <span style="float: left;">0</span>
+                                                    <span style="float: right;">0</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <thead style="background-color: #212529;">
+                                            <tr>
+                                                <th style="text-align: center; color: #ff3c00;">
+                                                    <span>Orders with Balance</span>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="color: white; font-size: 16px;">
+                                                    <span style="float: left;">0</span>
+                                                    <span style="float: right;">0</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                        <thead style="background-color: #212529;">
+                                            <tr>
+                                                <th style="text-align: center;  color: #ff3c00;">
+                                                    <span style="float: left;">ToVerify</span>
+                                                    <span style="float: right;">Questionable</span>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td style="color: white; font-size: 16px;">
+                                                    <span style="float: left;">0</span>
+                                                    <span style="float: right;">0</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div> 
+                            </div> <!-- end card body-->
+                        </div> <!-- end card -->
+
+                                    
+                            </div><!-- end col-->
+                     
+
+                        <div class="col-xl-3 col-lg-6" style="margin-left: 20px; height: 400px">
+                                <div class="card-dbrd">
+                                    <div class="d-flex card-header justify-content-between align-items-center" style="background-color: #212529;">
+                                        <h4 class="header-title">TOP SELLER PRODUCTS</h4>
+                                    </div>
+
+                                    <div class="card-body p-2">
+
+                                        <div class="table-responsive">
+                                            <table class="table table-sm table-centered table-hover table-borderless mb-1">
+                                                
+                                                <tbody>
+                                                    <tr>
+                                                        <td>SHAMPOO</td>
+                                                        <td style="padding-top: 14px;">
+                                                            <div class="progress" style="height: 5px; width: 100px;">
+                                                                <div class="progress-bar" role="progressbar" style="width: 65%; background-color: #ff3c00;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+                                                            </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>JUNKFOODS</td>
+                                                        <td style="padding-top: 14px;">
+                                                            <div class="progress" style="height: 5px; width: 100px;">
+                                                                <div class="progress-bar" role="progressbar" style="width: 45%; background-color: #ff3c00;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">
+                                                            </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    
+                                                </tbody>
+                                            </table>
+                                        </div> <!-- end table-responsive-->
+                                    </div> <!-- end card-body-->
+                                </div> <!-- end card-->
+                            </div> <!-- end col-->
+                          
+                        </div>
+
                         
                         
                     </div>
@@ -290,6 +447,44 @@ include('connection.php');
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+
+                                                    
+    <script>
+    // Your PHP data for the bar graph
+    var barChartData = {
+        labels: ['Sales', 'Revenue', 'Net PFT', 'Expense', 'Growth'],
+        datasets: [{
+            label: 'Target and Status Graphs',
+            backgroundColor: '#313A46',
+            borderWidth: 1,
+            data: [10, 20, 30, 20, 3]  // Replace this with your actual data
+        }]
+    };
+    
+
+    // Get the canvas element and initialize the bar chart
+    var ctx = document.getElementById('myBarChart').getContext('2d');
+    var myBarChart = new Chart(ctx, {
+        type: 'horizontalBar',  // Set the type to 'horizontalBar'
+        data: barChartData,
+        options: {
+            responsive: true,
+            scales: {
+                x: [{
+                    ticks: {
+                        fontColor: '#313A46' // Set font color for x-axis labels
+                    }
+                }],
+                y: {
+                    display: false  // Hide the y-axis
+                }
+            }
+        }
+    });
+</script>
+
+
+
 
 </body>
 

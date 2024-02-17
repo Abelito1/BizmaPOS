@@ -1,9 +1,9 @@
 <?php
 	
-	$dbname = "athlete";
+	$dbname = "posdb";
 	$dbuser = "root";
 	$dbpass = "";
-	$dbhost = "localhost";
+	$dbhost = "127.0.0.1";
 
 	$conn = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 
